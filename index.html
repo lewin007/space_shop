@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticker Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Welcome to Our Sticker Shop</h1>
+            <nav>
+                <ul>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section id="gallery" class="gallery">
+        <h2>Sticker Gallery</h2>
+        
+        <!-- Category Filter Dropdown -->
+        <div class="filter-container">
+            <label for="categorySelect">Choose a category:</label>
+            <select id="categorySelect" onchange="filterStickers()">
+                <option value="all">All</option>
+                <option value="basketball">Basketball</option>
+                <option value="one-piece">onePiece</option>
+                <option value="meme">Meme</option>
+                <option value="arcane">Arcane</option>
+                <option value="architecture">Architecture</option>
+                <option value="art">Art</option>
+                <option value="attackOnTitins">attack On Titins</option>
+                <option value="avatar">Avatar</option>
+                <option value="avenger">Avenger</option>
+                <option value="batman">Batman</option>
+                <option value="berserk">Berserk</option>
+                <option value="blackClover">Black Clover</option>
+                <option value="bleatch">Bleatch</option>
+                <option value="box">Box</option>
+                <option value="breakingBad">Breaking Bad</option>
+                <option value="classroomOfElits">Classroom Of Elits</option>
+                <option value="dark">Dark</option>
+                <option value="deadpool">Deadpool</option>
+                <option value="deathnote">death note</option>
+                <option value="demonSlayer">Demon Slayer</option>
+                <option value="dragonBall">Dragon Ball</option>
+                <option value="fightClub">fightClub</option>
+                <option value="animefilms">anime films</option>
+                <option value="football">football</option>
+                <option value="forestGump">forestGump</option>
+                <option value="freinds">freinds</option>
+                <option value="games">games</option>
+                <option value="godFather">godFather</option>
+                <option value="gta">gta</option>
+                <option value="gumbull">gumbull</option>
+                <option value="harryPotter">harryPotter</option>
+                <option value="howIMetYourMother">how I Met Your Mother</option>
+                <option value="howToTrainYourDragon">how To Train Your Dragon</option>
+                <option value="hxh">hunter x hunter</option>
+                <option value="info">informatique</option>
+                <option value="intersteller">intersteller</option>
+                <option value="invincible">invincible</option>
+                <option value="jjk">jujutsu kaisen</option>
+                <option value="jojo">jojo</option>
+                <option value="joker">joker</option>
+                <option value="klem">klem</option>
+                <option value="kongfuPanda">kongfu Panda</option>
+                <option value="lacasadelpaper">la casa del paper</option>
+                <option value="lalaland">lalaland</option>
+                <option value="love">love</option>
+                <option value="loveIsWar">love Is War</option>
+                <option value="matrix">matrix</option>
+                <option value="miyamora">miyamora</option>
+                <option value="monsters">monsters</option>
+                <option value="moonNight">moon Night</option>
+                <option value="mrRobot">mr Robot</option>
+                <option value="mushukutensai">mushuku tensai</option>
+                <option value="myHeroAcademy">my Hero Academy</option>
+                <option value="naruto">naruto</option>
+                <option value="nimo">nimo</option>
+                <option value="nurse">nurse</option>
+                <option value="oiretsOfKaribian">oiretsOfKaribian</option>
+                <option value="onePenchman">onePenchman</option>
+                <option value="openhaimer">openhaimer</option>
+                <option value="palastine">palastine</option>
+                <option value="peakyBlinders">peaky Blinders</option>
+                <option value="prisonBreak">prison Break</option>
+                <option value="rapanzul">rapanzul</option>
+                <option value="ratatoille">ratatoille</option>
+                <option value="rickAndMorty">rickAndMorty</option>
+                <option value="science">science</option>
+                <option value="sialentVoice">sialentVoice</option>
+                <option value="simson">simson</option>
+                <option value="soloLeveling">soloLeveling</option>
+                <option value="songsAndSingers">songsAndSingers</option>
+                <option value="spacetoon">spacetoon</option>
+                <option value="spiderman">spiderman</option>
+                <option value="spongbob">spongbob</option>
+                <option value="strangerThings">strangerThings</option>
+                <option value="the100">the100</option>
+                <option value="topGun">topGun</option>
+                <option value="toyStory">toyStory</option>
+                <option value="villandSaga">villandSaga</option>
+                <option value="wednesday">wednesday</option>
+                <option value="zatla">zatla</option>
+
+                <!-- Add more categories as needed -->
+            </select>
+        </div>
+
+        <form id="selectionForm">
+            <div class="thumbnails"></div>
+            <!-- Submit and Unselect buttons -->
+            <div class="button-container">
+                <button type="submit" class="submit-btn">Submit Selection</button>
+                <button type="button" class="unselect-btn" onclick="unselectAllStickers()">Unselect Stickers</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Google Form Embed -->
+    <div class="form-container">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdTy42ePEOVX7IVLuNVUKg6vVfu2BCTTe1AO-naYQQc5DcdPw/viewform?embedded=true" width="640" height="959" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div>
+
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2>Contact Us</h2>
+            <p>Feel free to reach out to us!</p>
+            <p>Phone: <a href="tel:+53204620">53204620</a></p>
+            <p>Instagram: <a href="https://www.instagram.com/planet_stickers_x?igsh=bjBxamNqd2NjenAx&utm_source=qr" target="_blank">@planet_stickers</a></p>
+        </div>
+    </section>
+    
+    <!-- Scroll to Top Arrow -->
+    <div class="scroll-to-top" id="scrollToTopBtn">&uarr;</div>
+
+    
+
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 Sticker Shop. All rights reserved.</p>
+            <p>Made with ❤️ by Aziz</p>
+            <p>Follow us on Instagram: <a href="https://www.instagram.com/planet_stickers_x?igsh=bjBxamNqd2NjenAx&utm_source=qr" target="_blank">@planet_stickers</a></p>
+        </div>
+    </footer>
+
+    <div class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" src="" alt="">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
