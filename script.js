@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "joker":2,
         "klem":27,
         "kongfuPanda":1,
-        "laCasaDelPaper":1,
+        "lacasadelpaper":1,
         "lalaland":1,
         "love":5,
         "loveIsWar":1,
