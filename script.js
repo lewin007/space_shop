@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     const thumbnailsContainer = document.querySelector('.thumbnails');
+    const submitBtn = document.getElementById('submit-btn');
+    const selectedStickersLabel = document.getElementById('selected-stickers-label');
+
 
     // Categories and their corresponding image counts
     const stickerCategories = {
@@ -114,6 +117,25 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+    // Add event listener to submit button
+submitBtn.addEventListener('click', function() {
+    const selectedStickers = [];
+    const checkboxes = document.querySelectorAll('.thumbnails input[type="checkbox"]:checked');
+
+    checkboxes.forEach(checkbox => {
+        const category = checkbox.classList[0];
+        const index = checkbox.value.match(/\d+$/)[0];  // Extract number from value
+        selectedStickers.push(`${category}/${category} (${index})`);
+    });
+
+    if (selectedStickers.length > 0) {
+        selectedStickersLabel.textContent = selectedStickers.join(', ');
+    } else {
+        selectedStickersLabel.textContent = 'No stickers selected';
+    }
+});
+
+
 
 // Filter stickers based on category
 function filterStickers() {
@@ -136,7 +158,12 @@ function filterStickers() {
 function unselectAllStickers() {
     const checkboxes = document.querySelectorAll('.thumbnails input[type="checkbox"]');
     checkboxes.forEach(checkbox => checkbox.checked = false);
+        // Clear the label
+        const selectedStickersLabel = document.getElementById('selected-stickers-label');
+        selectedStickersLabel.textContent = ''; // Clear the label text
 }
+
+
 
 document.addEventListener("scroll", function() {
     const scrollToTopBtn = document.getElementById("scrollToTopBtn");
