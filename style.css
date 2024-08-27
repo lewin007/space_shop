@@ -6,14 +6,14 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f8f8;
-    color: #333;
+    background-color: #A7E6FF;
+    color: #050C9C;
     line-height: 1.6;
-    scroll-behavior: smooth; /* Smooth scrolling */
+    scroll-behavior: smooth;
 }
 
 header {
-    background-image: linear-gradient(to right, #4A90E2, #53B7F6);
+    background-image: linear-gradient(to right, #050C9C, #3572EF);
     color: #fff;
     padding: 20px;
     position: fixed;
@@ -59,7 +59,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #ddd;
+    color: #A7E6FF;
     text-shadow: 0 0 5px #fff;
 }
 
@@ -67,12 +67,15 @@ section {
     padding: 40px;
     position: relative;
     overflow: hidden;
-    margin-top: 100px; /* Adjusted for the fixed header */
+    margin-top: 100px;
+    background-color: #fff;
+    color: #050C9C;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-.gallery,
-.contact {
-    background-color: #fff;
+.gallery, .contact {
+    background-color: #F2F8FF;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 40px;
@@ -110,7 +113,7 @@ section {
 }
 
 footer {
-    background-color: #333;
+    background-color: #050C9C;
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -172,7 +175,7 @@ footer {
     padding: 12px 24px;
     font-size: 1.2rem;
     color: #fff;
-    background-color: #4A90E2;
+    background-color: #3572EF;
     border: none;
     border-radius: 25px;
     cursor: pointer;
@@ -181,17 +184,17 @@ footer {
 }
 
 .submit-btn:hover {
-    background-color: #357EC7;
+    background-color: #050C9C;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
 .unselect-btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
+    display: block;
+    margin: 20px auto 0;
+    padding: 12px 24px;
     font-size: 1rem;
     color: #fff;
-    background-color: #ff6f61;
+    background-color: #3ABEF9;
     border: none;
     border-radius: 25px;
     cursor: pointer;
@@ -200,7 +203,7 @@ footer {
 }
 
 .unselect-btn:hover {
-    background-color: #e65c55;
+    background-color: #3572EF;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -208,15 +211,16 @@ input[type="checkbox"] {
     appearance: none;
     width: 20px;
     height: 20px;
-    border: 2px solid #4A90E2;
+    border: 2px solid #050C9C;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 
 input[type="checkbox"]:checked {
-    background-color: #4A90E2;
-    border-color: #4A90E2;
+    background-color: #050C9C;
+    border-color: #050C9C;
+    transform: rotate(360deg);
 }
 
 .thumbnails {
@@ -246,8 +250,9 @@ input[type="checkbox"]:checked {
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
+
 .contact {
-    background-color: #f2f2f2;
+    background-color: #F2F8FF;
     padding: 60px 20px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -262,7 +267,7 @@ input[type="checkbox"]:checked {
 
 .contact h2 {
     font-size: 2rem;
-    color: #4A90E2;
+    color: #050C9C;
     margin-bottom: 20px;
 }
 
@@ -273,15 +278,16 @@ input[type="checkbox"]:checked {
 }
 
 .contact a {
-    color: #4A90E2;
+    color: #3572EF;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .contact a:hover {
-    color: #357EC7;
+    color: #3ABEF9;
 }
+
 /* Scroll to Top Button */
 .scroll-to-top {
     position: fixed;
@@ -289,7 +295,7 @@ input[type="checkbox"]:checked {
     right: 20px;
     width: 50px;
     height: 50px;
-    background-color: #4A90E2;
+    background-color: #3572EF;
     color: #fff;
     text-align: center;
     line-height: 50px;
@@ -302,28 +308,40 @@ input[type="checkbox"]:checked {
     z-index: 1000;
 }
 
-
 .scroll-to-top.visible {
     opacity: 1;
 }
 
 .scroll-to-top:hover {
-    background-color: #357EC7;
+    background-color: #050C9C;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     transform: scale(1.1);
 }
-
-
 
 /* Add fade-in for the arrow */
 @keyframes fadeInArrow {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform:
+        translateY(20px);
     }
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
- 
+#selected-stickers-label {
+    margin-top: 20px;
+    padding: 10px;
+    border: 2px solid #4c66af; /* Green border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background color */
+    color: #0357f3; /* Dark text color */
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(110, 126, 220, 0.2); /* Subtle shadow for depth */
+    max-width: 300px; /* Set a maximum width */
+    margin-left: auto;
+    margin-right: auto; /* Center horizontally */
+}
