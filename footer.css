@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Pacifico&display=swap');
+
+footer {
+    background: linear-gradient(90deg, #A7E6FF, #3ABEF9, #3572EF, #050C9C);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10; /* Ensure the footer is on top if necessary */
+    animation: fadeIn 2s ease-in-out;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.footer-container h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5em;
+    margin: 0;
+    animation: slideIn 1.5s ease-in-out;
+}
+
+.footer-container nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.footer-container nav ul li {
+    display: inline;
+}
+
+.footer-container nav ul li a {
+    text-decoration: none;
+    color: #0000a031;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.footer-container nav ul li a:hover {
+    color: #3a05f9;
+    text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
