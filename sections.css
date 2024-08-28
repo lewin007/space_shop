@@ -1,0 +1,10 @@
+section {
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 100px;
+    background-color: #fff;
+    color: #050C9C;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Pacifico&display=swap');
+
+.header-container {
+    background: linear-gradient(90deg, #050C9C, #3572EF, #3ABEF9, #A7E6FF);
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.header-container h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5em;
+    color: #fff;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: slideIn 1.5s ease-in-out;
+}
+
+.header-container nav {
+    margin-top: 10px;
+}
+
+.header-container nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.header-container nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.header-container nav ul li a {
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.header-container nav ul li a:hover {
+    color: #050cee;
+    text-decoration:dashed;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
