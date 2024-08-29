@@ -72,13 +72,13 @@
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-    animation: pulseLogo 2s infinite ease-in-out;
+    transition: transform 1s ease, box-shadow 0.5s ease;
+    animation: pulseLogo 3s infinite ease-in-out;
 }
 
 /* Add animation on hover */
 .logo:hover {
-    transform: rotate(360deg) scale(1.2);
+    transform: rotate(360deg) scale(1.1);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
@@ -159,7 +159,7 @@
         transform: scale(1);
     }
     50% {
-        transform: scale(1.05);
+        transform: scale(1.08);
     }
 }
 
