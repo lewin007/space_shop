@@ -27,21 +27,55 @@
 }
 
 .header-container nav {
-    margin-top: 10px;
+    margin-top: 20px; /* Increased margin for better spacing */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInMenu 1.5s ease-in-out forwards;
 }
 
 .header-container nav ul {
     list-style-type: none;
     padding: 0;
-    animation: fadeInMenu 1.5s ease-in-out forwards;
+    margin: 0;
+    display: flex;
+    gap: 20px; /* Add gap for consistent spacing between items */
 }
 
 .header-container nav ul li {
-    display: inline;
-    margin: 0 15px;
+    display: inline-block;
     opacity: 0;
-    animation: fadeInMenuItems 2s ease-in-out forwards;
+    animation: fadeInMenuItems 1s ease-in-out forwards;
+    animation-delay: calc(0.1s * var(--i)); /* Staggered animation */
+    transform: translateY(10px); /* Initial position for smooth slide-in */
 }
+
+.header-container nav ul li a {
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2em;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.header-container nav ul li a:hover {
+    color: #050cee;
+    text-decoration: dashed;
+    transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes fadeInMenuItems {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 .header-container nav ul li a {
     font-family: 'Roboto', sans-serif;
