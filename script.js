@@ -210,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Helper function to create and append a sticker element
     function createStickerElement(category, index) {
         const img = document.createElement('img');
-        img.src = `${category}/${category} (${index}).jpg`;
+        img.src = `${category}/${category} (${index}).JPG`;
         img.alt = `${category} Sticker ${index}`;
         img.classList.add('sticker');
 
