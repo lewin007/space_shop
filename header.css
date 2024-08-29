@@ -27,11 +27,10 @@
 }
 
 .header-container nav {
-    margin-top: 20px; /* Increased margin for better spacing */
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: fadeInMenu 1.5s ease-in-out forwards;
 }
 
 .header-container nav ul {
@@ -39,43 +38,17 @@
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 20px; /* Add gap for consistent spacing between items */
+    gap: 20px;
+    animation: fadeInMenu 1.5s ease-in-out forwards;
 }
 
 .header-container nav ul li {
     display: inline-block;
     opacity: 0;
     animation: fadeInMenuItems 1s ease-in-out forwards;
-    animation-delay: calc(0.1s * var(--i)); /* Staggered animation */
-    transform: translateY(10px); /* Initial position for smooth slide-in */
+    animation-delay: calc(0.1s * var(--i));
+    transform: translateY(10px);
 }
-
-.header-container nav ul li a {
-    font-family: 'Roboto', sans-serif;
-    text-decoration: none;
-    color: #fff;
-    font-size: 1.2em;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.header-container nav ul li a:hover {
-    color: #050cee;
-    text-decoration: dashed;
-    transform: scale(1.1);
-}
-
-/* Animations */
-@keyframes fadeInMenuItems {
-    0% {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 
 .header-container nav ul li a {
     font-family: 'Roboto', sans-serif;
@@ -117,7 +90,7 @@
 }
 
 /* Animations */
-@keyframes fadeIn {
+@keyframes fadeInBackground {
     from {
         opacity: 0;
     }
@@ -137,41 +110,32 @@
     }
 }
 
-@keyframes fadeInBackground {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 @keyframes fadeInMenu {
-    0% {
+    from {
         opacity: 0;
     }
-    100% {
+    to {
         opacity: 1;
     }
 }
 
 @keyframes fadeInMenuItems {
-    0% {
+    from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(10px);
     }
-    100% {
+    to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
 @keyframes fadeInMenuLinks {
-    0% {
+    from {
         opacity: 0;
         transform: scale(0.9);
     }
-    100% {
+    to {
         opacity: 1;
         transform: scale(1);
     }
