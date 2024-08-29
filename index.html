@@ -138,14 +138,28 @@
 
         <form id="selectionForm">
             <div class="thumbnails"></div>
+            
             <!-- Submit and Unselect buttons -->
             <div class="button-container">
                 <button type="button" id="submit-btn" class="submit-btn">Submit Selection</button>
                 <button type="button" class="unselect-btn" onclick="unselectAllStickers()">Unselect Stickers</button>
             </div>
             <div id="selected-stickers-label">No stickers selected</div>
+            <div id="pagination-container" class="pagination">
+                <!-- Pagination controls will be dynamically generated here -->
+            </div>
         </form>
     </section>
+
+    <section id="gallery" class="gallery">
+        <!-- Existing Gallery Content -->
+        
+        <!-- Pagination Controls -->
+        <div id="pagination-container" class="pagination">
+            <!-- Pagination controls will be dynamically generated here -->
+        </div>
+    </section>
+    
 
     <!--  Form Embed -->
     <div class="form-container">
@@ -296,6 +310,8 @@
         mail: mail,
         sticker: sticker,
       });
+      alert("Submission successful!"); // Alert the user on successful submission
+
     }
 
     function getElementVal(id) {

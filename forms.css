@@ -68,3 +68,79 @@
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.pagination button {
+    background-color: #85b5ee; /* Green */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px; /* Increased margin to provide spacing when wrapped */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pagination button:hover {
+    background-color: #047af0; ; /* Darker green */
+    transform: scale(1.05);
+}
+
+.pagination button:disabled {
+    background-color: #ddd;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.pagination button.active {
+    background-color: #008CBA; /* Blue */
+    color: white;
+    border-radius: 5px;
+}
+
+.pagination span {
+    font-size: 16px;
+    color: #333;
+    margin: 0 5px;
+    font-weight: bold;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .pagination button {
+        padding: 8px 12px; /* Slightly smaller padding on medium screens */
+        font-size: 14px;    /* Slightly smaller text on medium screens */
+    }
+
+    .pagination span {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pagination {
+        flex-direction: column; /* Stack pagination buttons vertically on small screens */
+        align-items: stretch;
+    }
+
+    .pagination button {
+        width: 100%; /* Make buttons take up the full width on small screens */
+        padding: 10px;
+        margin: 5px 0; /* Space buttons vertically */
+        font-size: 16px;
+    }
+
+    .pagination span {
+        font-size: 14px;
+        text-align: center; /* Center align the span text */
+        margin-bottom: 10px;
+    }
+}

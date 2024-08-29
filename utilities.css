@@ -58,6 +58,27 @@ input[type="checkbox"]:checked {
     z-index: 1000;
 }
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .scroll-to-top {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+        line-height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-to-top {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+        line-height: 35px;
+        bottom: 10px;
+        right: 10px;
+    }
+}
+
 .scroll-to-top.visible {
     opacity: 1;
 }
@@ -96,6 +117,27 @@ input[type="checkbox"]:checked {
     background-color: #050C9C;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .scroll-to-down {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+        line-height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-to-down {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+        line-height: 35px;
+        bottom: 10px;
+        right: 10px;
+    }
 }
 
 .submit-btn {
