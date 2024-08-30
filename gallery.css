@@ -84,3 +84,97 @@
         flex: 1 1 calc(100% - 20px);        
     }
 }
+/* Importing Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Filter Container Styling */
+.filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    font-family: 'Poppins', sans-serif;
+    animation: container-bounce 1s ease;
+}
+
+.filter-container label {
+    font-size: 18px;
+    color: #444;
+    margin-right: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px #aaa;
+}
+
+/* Select Dropdown Styling */
+.filter-container select {
+    padding: 10px 15px;
+    border-radius: 12px;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    font-size: 16px;
+    color: #444;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    animation: dropdown-bounce 1s ease;
+    font-weight: 500;
+}
+
+/* Select Focus Effect */
+.filter-container select:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
+    background-color: #f0f8ff;
+}
+
+/* Select Hover Effect */
+.filter-container select:hover {
+    border-color: #007BFF;
+    background-color: #f0f8ff;
+}
+
+/* Option Styling */
+.filter-container select option {
+    padding: 12px;
+    background-color: #fafafa;
+    color: #444;
+}
+
+/* Option Hover Effect */
+.filter-container select option:hover {
+    background-color: #ddd;
+}
+
+/* Bouncy Container Animation */
+@keyframes container-bounce {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(10px);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Bouncy Dropdown Animation */
+@keyframes dropdown-bounce {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
