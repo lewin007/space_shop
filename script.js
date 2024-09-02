@@ -12,8 +12,10 @@ document.addEventListener("DOMContentLoaded", function() {
     // Categories and their corresponding image counts
     const stickerCategories = {
         // ... your categories
+        
         'basketball': 6,
         'one-piece': 20, // Use lowercase and hyphenated format
+        'anesthesie':18,
         'meme': 20,
         "arcane":2,
         "architecture":5,
