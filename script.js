@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "gumbull":2,
         "harryPotter":6,
         "howIMetYourMother":1,
-        "howToTrainYourDragon":1,
+        "howToTrainYourDragon":2,
         "hxh":1,
         "info":10,
         "intersteller":1,
