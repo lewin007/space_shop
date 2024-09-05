@@ -1,19 +1,17 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const thumbnailsContainer = document.querySelector('.thumbnails');
     const submitBtn = document.getElementById('submit-btn');
     const selectedStickersLabel = document.getElementById('selected-stickers-label');
     const paginationContainer = document.getElementById('pagination-container');
     const categorySelect = document.getElementById('categorySelect');
-    
 
     const stickersPerPage = 10;  // Number of stickers per page
     let currentPage = 1;  // Current page number
+    let selectedStickers = [];  // Global array to store selected stickers
 
     // Categories and their corresponding image counts
     const stickerCategories = {
-        // ... your categories
-        
-        'basketball': 6,
+'basketball': 6,
         'one-piece': 22, // Use lowercase and hyphenated format
         'anesthesie':18,
         'meme': 22,
@@ -96,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "wednesday":1,
         "zatla":3,    
         "kaijono8":5,
+        // (rest of your categories here)
     };
 
     // Function to render stickers based on the current page and category
@@ -122,7 +121,9 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
-        // Update pagination only for the "all" category
+            // Scroll to the top of the page when a new page is rendered
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
         if (category === 'all') {
             updatePagination();
         } else {
@@ -143,6 +144,27 @@ document.addEventListener("DOMContentLoaded", function() {
         checkbox.name = `sticker${index}`;
         checkbox.classList.add(category);
 
+        // Check if this sticker is already selected
+        if (selectedStickers.includes(checkbox.value)) {
+            checkbox.checked = true;  // Keep it checked if it was selected
+        }
+
+        // Event listener to handle checkbox selection/deselection
+        checkbox.addEventListener('change', function () {
+            if (checkbox.checked) {
+                // Add to the array if checked and not already present
+                if (!selectedStickers.includes(checkbox.value)) {
+                    selectedStickers.push(checkbox.value);
+                }
+            } else {
+                // Remove from the array if unchecked
+                selectedStickers = selectedStickers.filter(item => item !== checkbox.value);
+            }
+
+            // Update form input and label
+            updateStickerSelectionUI();
+        });
+
         const label = document.createElement('label');
         label.textContent = `${category} `;
 
@@ -154,15 +176,17 @@ document.addEventListener("DOMContentLoaded", function() {
         thumbnailsContainer.appendChild(stickerDiv);
     }
 
-    function scrollToTop() {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+    // Function to update the form input and label based on the current selected stickers
+    function updateStickerSelectionUI() {
+        const stickerInput = document.getElementById('sticker');
+        if (selectedStickers.length > 0) {
+            selectedStickersLabel.textContent = selectedStickers.join(', ');
+            stickerInput.value = selectedStickers.join(', '); // Populate input field
+        } else {
+            selectedStickersLabel.textContent = 'No stickers selected';
+            stickerInput.value = ''; // Clear input field if no stickers are selected
+        }
     }
-    
-
-    
 
     // Function to update pagination controls
     function updatePagination() {
@@ -176,93 +200,94 @@ document.addEventListener("DOMContentLoaded", function() {
             button.classList.add('pagination-button');
             if (i === currentPage) button.classList.add('active');
 
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 currentPage = i;
                 renderStickers(currentPage, categorySelect.value);
             });
 
             paginationContainer.appendChild(button);
-            scrollToTop(); // Scroll to the top when the page changes
         }
     }
 
     // Initial render for "all" category
     renderStickers(currentPage);
 
-    submitBtn.addEventListener('click', function() {
-        const selectedStickers = [];
-        const checkboxes = document.querySelectorAll('.thumbnails input[type="checkbox"]:checked');
-    
-        checkboxes.forEach(checkbox => {
-            const category = checkbox.classList[0];
-            const index = checkbox.value.match(/\d+$/)[0];  // Extract number from value
-            selectedStickers.push(`${category}/${category} (${index})`);
-        });
-    
-        const stickerInput = document.getElementById('sticker');
-        if (selectedStickers.length > 0) {
-            selectedStickersLabel.textContent = selectedStickers.join(', ');
-            stickerInput.value = selectedStickers.join(', '); // Populate input field
-    
-            // Alert the user
-            alert("Submission successfully!");
-        } else {
-            selectedStickersLabel.textContent = 'No stickers selected';
-            stickerInput.value = ''; // Clear the input field if no stickers are selected
-    
-            // Alert the user
-            alert("No stickers selected!");
-        }
-    });
-    
-
-    // Filter stickers based on selected category
-    categorySelect.addEventListener('change', function() {
-        currentPage = 1;  // Reset to first page on category change
-        const selectedCategory = categorySelect.value;
-        renderStickers(currentPage, selectedCategory);
-    });
-});
-
-// Unselect all stickers
+// Function to unselect all stickers
 function unselectAllStickers() {
+    // Uncheck all checkboxes
     const checkboxes = document.querySelectorAll('.thumbnails input[type="checkbox"]');
-    checkboxes.forEach(checkbox => checkbox.checked = false);
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = false; // Uncheck each checkbox
+    });
 
-    // Clear the label
-    const selectedStickersLabel = document.getElementById('selected-stickers-label');
-    selectedStickersLabel.textContent = ''; // Clear the label text
+    // Clear the selected stickers array
+    selectedStickers = [];
+
+    // Update the form input and label to reflect that no stickers are selected
+    updateStickerSelectionUI();
 }
 
-document.addEventListener("scroll", function() {
-    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-    if (window.scrollY > 600) {
-        scrollToTopBtn.classList.add("visible");
+// Attach event listener to the unselect button
+document.getElementById('unselect-btn').addEventListener('click', unselectAllStickers);
+
+
+    // Attach event listeners
+    document.getElementById('unselect-btn').addEventListener('click', unselectAllStickers);
+
+// Pricing rules
+const pricingRules = [
+    { count: 32, price: 26 },
+    { count: 25, price: 22 },
+    { count: 20, price: 17 },
+    { count: 15, price: 13 },
+    { count: 12, price: 10 },
+    { count: 1, price: 1 } // Price for a single sticker
+];
+
+// Function to calculate the cost based on the number of stickers
+function calculateCost(numStickers) {
+    let totalCost = 0;
+    let remainingStickers = numStickers;
+
+    // Apply pricing rules from highest to lowest
+    for (let rule of pricingRules) {
+        if (remainingStickers >= rule.count) {
+            const numOfSets = Math.floor(remainingStickers / rule.count);
+            totalCost += numOfSets * rule.price;
+            remainingStickers -= numOfSets * rule.count;
+        }
+    }
+
+    // Add cost for any remaining stickers (use the smallest rule price for leftovers)
+    if (remainingStickers > 0) {
+        totalCost += remainingStickers * pricingRules[pricingRules.length - 1].price;
+    }
+
+    return totalCost;
+}
+
+// Submit button functionality
+submitBtn.addEventListener('click', function () {
+    const numSelectedStickers = selectedStickers.length;
+    const totalCost = calculateCost(numSelectedStickers);
+    
+    if (numSelectedStickers > 0) {
+        alert(`Submission successful! Total cost: ${totalCost} DT`);
     } else {
-        scrollToTopBtn.classList.remove("visible");
+        alert("No stickers selected!");
     }
 });
 
-document.getElementById("scrollToTopBtn").addEventListener("click", function() {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-});
 
-document.addEventListener("scroll", function() {
-    const scrollTodownBtn = document.getElementById("scrollTodownBtn");
-    if (window.scrollY > 600) {
-        scrollTodownBtn.classList.add("visible");
-    } else {
-        scrollTodownBtn.classList.remove("visible");
-    }
-});
-
-document.getElementById("scrollTodownBtn").addEventListener("click", function() {
-    const scrollAmount = window.innerHeight * 2; // You can adjust this value as needed
-    window.scrollTo({
-        top: window.scrollY + scrollAmount,
-        behavior: "smooth"
+    // Filter stickers based on selected category
+    categorySelect.addEventListener('change', function () {
+        currentPage = 1;  // Reset to first page on category change
+        renderStickers(currentPage, categorySelect.value);
     });
+
+        // Set default value of the category select dropdown to "all" on page load
+        categorySelect.value = 'all';
+
+        // Initial render for "all" category
+        renderStickers(currentPage);
 });
