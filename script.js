@@ -291,3 +291,36 @@ submitBtn.addEventListener('click', function () {
         // Initial render for "all" category
         renderStickers(currentPage);
 });
+
+document.addEventListener("scroll", function() {
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+    if (window.scrollY > 600) {
+        scrollToTopBtn.classList.add("visible");
+    } else {
+        scrollToTopBtn.classList.remove("visible");
+    }
+});
+
+document.getElementById("scrollToTopBtn").addEventListener("click", function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+document.addEventListener("scroll", function() {
+    const scrollTodownBtn = document.getElementById("scrollTodownBtn");
+    if (window.scrollY > 600) {
+        scrollTodownBtn.classList.add("visible");
+    } else {
+        scrollTodownBtn.classList.remove("visible");
+    }
+});
+
+document.getElementById("scrollTodownBtn").addEventListener("click", function() {
+    const scrollAmount = window.innerHeight * 2; // You can adjust this value as needed
+    window.scrollTo({
+        top: window.scrollY + scrollAmount,
+        behavior: "smooth"
+    });
+});
