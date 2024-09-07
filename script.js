@@ -192,26 +192,52 @@ function createStickerElement(category, index) {
         }
     }
 
-    // Function to update pagination controls
-    function updatePagination() {
-        paginationContainer.innerHTML = ''; // Clear existing pagination buttons
-        const totalStickers = Object.values(stickerCategories).reduce((a, b) => a + b, 0);
-        const totalPages = Math.ceil(totalStickers / stickersPerPage);
+// Function to update pagination controls
+function updatePagination() {
+    paginationContainer.innerHTML = ''; // Clear existing pagination buttons
+    const totalStickers = Object.values(stickerCategories).reduce((a, b) => a + b, 0);
+    const totalPages = Math.ceil(totalStickers / stickersPerPage);
 
-        for (let i = 1; i <= totalPages; i++) {
-            const button = document.createElement('button');
-            button.textContent = i;
-            button.classList.add('pagination-button');
-            if (i === currentPage) button.classList.add('active');
+    const maxVisiblePages = 3; // Number of pages to show before "..."
+    const lastPage = totalPages; // The last page number
 
-            button.addEventListener('click', function () {
-                currentPage = i;
-                renderStickers(currentPage, categorySelect.value);
-            });
-
-            paginationContainer.appendChild(button);
-        }
+    // Helper to create pagination buttons
+    function createButton(pageNumber) {
+        const button = document.createElement('button');
+        button.textContent = pageNumber;
+        button.classList.add('pagination-button');
+        if (pageNumber === currentPage) button.classList.add('active');
+        
+        button.addEventListener('click', function () {
+            currentPage = pageNumber;
+            renderStickers(currentPage, categorySelect.value);
+        });
+        
+        paginationContainer.appendChild(button);
     }
+
+    // Always display the first page
+    createButton(1);
+
+    // Show the first few pages (1, 2, 3...)
+    if (currentPage > maxVisiblePages + 1) {
+        paginationContainer.appendChild(document.createTextNode("..."));
+    }
+
+    // Show the surrounding pages (current page, previous, and next)
+    for (let i = Math.max(2, currentPage - 1); i <= Math.min(currentPage + 1, lastPage - 1); i++) {
+        createButton(i);
+    }
+
+    // Show the last page with "..." if necessary
+    if (currentPage < lastPage - maxVisiblePages) {
+        paginationContainer.appendChild(document.createTextNode("..."));
+    }
+    
+    // Always display the last page
+    if (lastPage > 1) createButton(lastPage);
+}
+
 
     // Initial render for "all" category
     renderStickers(currentPage);

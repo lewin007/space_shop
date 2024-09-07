@@ -68,79 +68,103 @@
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
+
+/* Pagination Styles */
 .pagination {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    font-family: Arial, sans-serif;
-    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    font-family: 'Poppins', sans-serif;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 .pagination button {
-    background-color: #85b5ee; /* Green */
+    background: linear-gradient(135deg, #3572EF, #050C9C); /* Gradient for a modern look */
     color: white;
     border: none;
-    padding: 10px 15px;
-    margin: 5px; /* Increased margin to provide spacing when wrapped */
-    border-radius: 5px;
+    padding: 10px 16px;
+    border-radius: 50px; /* Rounded for a more futuristic style */
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for subtle depth */
 }
 
 .pagination button:hover {
-    background-color: #047af0; ; /* Darker green */
-    transform: scale(1.05);
+    background-color: #3ABEF9;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .pagination button:disabled {
-    background-color: #ddd;
+    background-color: #ccc;
     color: #888;
     cursor: not-allowed;
+    box-shadow: none;
 }
 
 .pagination button.active {
-    background-color: #008CBA; /* Blue */
+    background: linear-gradient(135deg, #3ABEF9, #050C9C);
     color: white;
-    border-radius: 5px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .pagination span {
-    font-size: 16px;
+    font-size: 14px;
     color: #333;
-    margin: 0 5px;
     font-weight: bold;
+    letter-spacing: 0.6px;
 }
 
-/* Media queries for responsiveness */
+/* Media Queries for Responsiveness */
+
+/* For tablets and medium devices */
 @media (max-width: 768px) {
     .pagination button {
-        padding: 8px 12px; /* Slightly smaller padding on medium screens */
-        font-size: 14px;    /* Slightly smaller text on medium screens */
+        padding: 8px 12px; /* More compact padding for medium screens */
+        font-size: 13px; /* Smaller font for better readability */
+        border-radius: 40px; /* Adjusted rounding for medium devices */
     }
 
     .pagination span {
-        font-size: 14px;
+        font-size: 13px;
     }
 }
 
+/* For small devices and mobile phones */
 @media (max-width: 480px) {
     .pagination {
-        flex-direction: column; /* Stack pagination buttons vertically on small screens */
-        align-items: stretch;
+        gap: 5px; /* Less gap between pagination items */
     }
 
     .pagination button {
-        width: 100%; /* Make buttons take up the full width on small screens */
-        padding: 10px;
-        margin: 5px 0; /* Space buttons vertically */
-        font-size: 16px;
+        padding: 6px 10px; /* Even more compact padding for mobile screens */
+        font-size: 12px; /* Smaller font size for mobile */
+        border-radius: 30px; /* Smaller rounding for better usability on touchscreens */
     }
 
     .pagination span {
-        font-size: 14px;
-        text-align: center; /* Center align the span text */
-        margin-bottom: 10px;
+        font-size: 12px; /* Smaller text for compactness */
+    }
+}
+
+/* For very small devices or small screen phones */
+@media (max-width: 360px) {
+    .pagination {
+        flex-direction: row; /* Keep pagination horizontal */
+        gap: 4px; /* Minimum gap to keep buttons closer */
+    }
+
+    .pagination button {
+        padding: 5px 8px; /* Minimal padding for tiny screens */
+        font-size: 11px; /* Smaller font to fit tiny screens */
+        border-radius: 20px; /* Rounded for touch-friendly design */
+    }
+
+    .pagination span {
+        font-size: 11px; /* Very small text for small devices */
     }
 }
