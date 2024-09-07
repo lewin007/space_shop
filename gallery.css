@@ -16,7 +16,7 @@
 
 .thumbnails > div {
     flex: 0 0 calc(25% - 20px);
-    margin: 10px;
+    margin: 10px; 
     text-align: center;
 }
 

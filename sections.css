@@ -8,3 +8,136 @@ section {
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
+
+/* Pricing Section */
+.pricing {
+    background: linear-gradient(135deg, #050C9C, #3572EF, #3ABEF9);
+    padding: 80px 20px;
+    color: #fff;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Light Effect */
+.pricing::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 200%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-50%) rotate(30deg);
+    z-index: 0;
+}
+
+/* Title Styling */
+.pricing h2 {
+    font-size: 2.5rem;
+    color: #A7E6FF;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+/* Pricing Table Container */
+.pricing-table-container {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Hover Effect on Pricing Container */
+.pricing-table-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 25px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* Pricing Table */
+.pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #fff;
+}
+
+.pricing-table th, .pricing-table td {
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.pricing-table th {
+    background: rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.pricing-table td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Table Row Hover Effect */
+.pricing-table tbody tr {
+    transition: all 0.4s ease-in-out;
+}
+
+.pricing-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+/* Table Row Styling */
+.pricing-table tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.pricing-table tbody tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pricing h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .pricing-table-container {
+        padding: 15px;
+    }
+
+    .pricing-table th, .pricing-table td {
+        padding: 10px 20px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    .pricing-table-container {
+        padding: 10px;
+    }
+
+    .pricing-table th, .pricing-table td {
+        padding: 8px 15px;
+        font-size: 1rem;
+    }
+}

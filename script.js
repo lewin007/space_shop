@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Categories and their corresponding image counts
     const stickerCategories = {
-'basketball': 6,
+        'basketball': 6,
         'one-piece': 22, // Use lowercase and hyphenated format
         'anesthesie':18,
         'meme': 22,
@@ -131,50 +131,54 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Helper function to create and append a sticker element
-    function createStickerElement(category, index) {
-        const img = document.createElement('img');
-        img.src = `${category}/${category} (${index}).JPG`;
-        img.alt = `${category} Sticker ${index}`;
-        img.classList.add('sticker');
+// Helper function to create and append a sticker element
+function createStickerElement(category, index) {
+    const img = document.createElement('img');
+    img.src = `${category}/${category} (${index}).JPG`;
+    img.alt = `${category} Sticker ${index}`;
+    img.classList.add('sticker');
 
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.value = `${category} Sticker ${index}`;
-        checkbox.name = `sticker${index}`;
-        checkbox.classList.add(category);
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.value = `${category} Sticker ${index}`;
+    checkbox.name = `sticker${index}`;
+    checkbox.classList.add(category, 'sticker-checkbox'); // Add a class for easier styling
 
-        // Check if this sticker is already selected
-        if (selectedStickers.includes(checkbox.value)) {
-            checkbox.checked = true;  // Keep it checked if it was selected
+    // Check if this sticker is already selected
+    if (selectedStickers.includes(checkbox.value)) {
+        checkbox.checked = true;  // Keep it checked if it was selected
+    }
+
+    // Event listener to handle checkbox selection/deselection
+    checkbox.addEventListener('change', function () {
+        if (checkbox.checked) {
+            // Add to the array if checked and not already present
+            if (!selectedStickers.includes(checkbox.value)) {
+                selectedStickers.push(checkbox.value);
+            }
+        } else {
+            // Remove from the array if unchecked
+            selectedStickers = selectedStickers.filter(item => item !== checkbox.value);
         }
 
-        // Event listener to handle checkbox selection/deselection
-        checkbox.addEventListener('change', function () {
-            if (checkbox.checked) {
-                // Add to the array if checked and not already present
-                if (!selectedStickers.includes(checkbox.value)) {
-                    selectedStickers.push(checkbox.value);
-                }
-            } else {
-                // Remove from the array if unchecked
-                selectedStickers = selectedStickers.filter(item => item !== checkbox.value);
-            }
+        // Update form input and label
+        updateStickerSelectionUI();
+    });
 
-            // Update form input and label
-            updateStickerSelectionUI();
-        });
+    // Add click event listener to the image to toggle the checkbox
+    img.addEventListener('click', function () {
+        checkbox.checked = !checkbox.checked; // Toggle the checkbox state
+        checkbox.dispatchEvent(new Event('change')); // Manually trigger the change event
+    });
 
-        const label = document.createElement('label');
-        label.textContent = `${category} `;
+    const stickerDiv = document.createElement('div');
+    stickerDiv.classList.add('sticker-container'); // Add a class for styling
+    stickerDiv.appendChild(img);
+    stickerDiv.appendChild(checkbox);
 
-        const stickerDiv = document.createElement('div');
-        stickerDiv.appendChild(img);
-        stickerDiv.appendChild(checkbox);
-        stickerDiv.appendChild(label);
+    thumbnailsContainer.appendChild(stickerDiv);
+}
 
-        thumbnailsContainer.appendChild(stickerDiv);
-    }
 
     // Function to update the form input and label based on the current selected stickers
     function updateStickerSelectionUI() {
