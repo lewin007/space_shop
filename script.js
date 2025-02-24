@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "football":23,
         "forestGump":1,
         "freinds":2,
-        "games":11,
+        "games":12,
         "godFather":1,
         "gta":5,
         "gumbull":2,
